@@ -1,5 +1,5 @@
 {
-    "name": "vinicius73/SeoTools",
+    "name": "vinicius73/seotools",
     "description": "A package containing SEO helpers.",
     "keywords": ["sitemap", "robots", "meta", "seo", "opengraph", "laravel"],
     "license": "MIT",
