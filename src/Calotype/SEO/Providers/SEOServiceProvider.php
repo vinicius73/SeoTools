@@ -46,6 +46,7 @@ class SEOServiceProvider extends ServiceProvider
 
         // Generate sitemap.xml route
         $this->app['router']->get('sitemap.xml', function () use ($app) {
+            $app['calotype.seo.generators.sitemap']->run();
             $response = new Response($app['calotype.seo.generators.sitemap']->generate(), 200);
             $response->header('Content-Type', 'text/xml');
 
@@ -71,6 +72,12 @@ class SEOServiceProvider extends ServiceProvider
         // Register the sitemap.xml generator
         $this->app->singleton('calotype.seo.generators.sitemap', function ($app) {
             return new SitemapGenerator();
+        });
+
+        // Register the sitemap configuration
+        $this->app->singleton('calotype.seo.generators.sitemap.run', function ($app) {
+            $class = $app['config']->get('seo::sitemap.classrun');
+            return new {$class}}($app['calotype.seo.generators.sitemap']);
         });
 
         // Register the meta tags generator
