@@ -1,5 +1,5 @@
 {
-    "name": "calotype/seo",
+    "name": "vinicius73/seo",
     "description": "A package containing SEO helpers.",
     "keywords": ["sitemap", "robots", "meta", "seo", "opengraph", "laravel"],
     "license": "MIT",
