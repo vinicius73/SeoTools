@@ -1,6 +1,6 @@
 <?php
 
-use Calotype\SEO\Generators\MetaGenerator;
+use Vinicius73\SEO\Generators\MetaGenerator;
 
 class MetaGeneratorTest extends PHPUnit_Framework_TestCase
 {
@@ -100,7 +100,7 @@ class MetaGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function getObjectMock($data)
     {
-        return Mockery::mock('Calotype\SEO\Contracts\MetaAware', array(
+        return Mockery::mock('Vinicius73\SEO\Contracts\MetaAware', array(
             'getMetaData' => $data,
         ));
     }

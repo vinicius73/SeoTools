@@ -1,4 +1,4 @@
-<?php namespace Calotype\SEO\Facades;
+<?php namespace Vinicius73\SEO\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -9,5 +9,5 @@ class Meta extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'calotype.seo.generators.meta'; }
+    protected static function getFacadeAccessor() { return 'Vinicius73.seo.generators.meta'; }
 }

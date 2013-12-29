@@ -1,4 +1,4 @@
-<?php namespace Calotype\SEO\Generators;
+<?php namespace Vinicius73\SEO\Generators;
 
 class RobotsGenerator
 {

@@ -1,23 +1,23 @@
 {
     "providers": [
-        "Calotype\SEO\Providers\SEOServiceProvider"
+        "Vinicius73\SEO\Providers\SEOServiceProvider"
     ],
     "aliases": [
         {
             "alias": "SEO\Meta",
-            "facade": "Calotype\SEO\Facades\Meta"
+            "facade": "Vinicius73\SEO\Facades\Meta"
         },
         {
             "alias": "SEO\Sitemap",
-            "facade": "Calotype\SEO\Facades\Sitemap"
+            "facade": "Vinicius73\SEO\Facades\Sitemap"
         },
         {
             "alias": "SEO\Robots",
-            "facade": "Calotype\SEO\Facades\Robots"
+            "facade": "Vinicius73\SEO\Facades\Robots"
         },
         {
             "alias": "SEO\OpenGraph",
-            "facade": "Calotype\SEO\Facades\OpenGraph"
+            "facade": "Vinicius73\SEO\Facades\OpenGraph"
         }
     ]
 }

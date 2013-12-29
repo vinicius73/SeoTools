@@ -11,6 +11,6 @@ return array(
     |
     */
 
-    'classrun' => 'Calotype\SEO\SitemapRun'
+    'classrun' => 'Vinicius73\SEO\SitemapRun'
 
 );

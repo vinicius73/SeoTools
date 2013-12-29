@@ -1,11 +1,11 @@
-<?php namespace Calotype\SEO;
+<?php namespace Vinicius73\SEO;
 
 
 class SitemapRun
 {
 
 	/**
-	 * @var \Calotype\SEO\Generators\SitemapGenerator
+	 * @var \Vinicius73\SEO\Generators\SitemapGenerator
 	 */
 	public $generator;
 

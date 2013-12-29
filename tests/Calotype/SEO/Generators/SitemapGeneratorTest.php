@@ -1,6 +1,6 @@
 <?php
 
-use Calotype\SEO\Generators\SitemapGenerator;
+use Vinicius73\SEO\Generators\SitemapGenerator;
 
 class SitemapGeneratorTest extends PHPUnit_Framework_TestCase
 {
@@ -193,7 +193,7 @@ class SitemapGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function getElementMock($data)
     {
-        return Mockery::mock('Calotype\SEO\Contracts\SitemapAware', array(
+        return Mockery::mock('Vinicius73\SEO\Contracts\SitemapAware', array(
             'getSitemapData' => $data,
         ));
     }

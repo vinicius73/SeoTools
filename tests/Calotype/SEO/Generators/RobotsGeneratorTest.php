@@ -1,6 +1,6 @@
 <?php
 
-use Calotype\SEO\Generators\RobotsGenerator;
+use Vinicius73\SEO\Generators\RobotsGenerator;
 
 class RobotsGeneratorTest extends PHPUnit_Framework_TestCase
 {

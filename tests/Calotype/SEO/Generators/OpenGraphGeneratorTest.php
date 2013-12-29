@@ -1,6 +1,6 @@
 <?php
 
-use Calotype\SEO\Generators\OpenGraphGenerator;
+use Vinicius73\SEO\Generators\OpenGraphGenerator;
 
 class OpenGraphGeneratorTest extends PHPUnit_Framework_TestCase
 {
@@ -94,7 +94,7 @@ class OpenGraphGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function getObjectMock($data)
     {
-        return Mockery::mock('Calotype\SEO\Contracts\OpenGraphAware', array(
+        return Mockery::mock('Vinicius73\SEO\Contracts\OpenGraphAware', array(
             'getOpenGraphData' => $data,
         ));
     }

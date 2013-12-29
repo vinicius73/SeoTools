@@ -1,4 +1,4 @@
-<?php namespace Calotype\SEO\Contracts;
+<?php namespace Vinicius73\SEO\Contracts;
 
 interface OpenGraphAware
 {

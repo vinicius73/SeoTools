@@ -1,6 +1,6 @@
-[![Latest Stable Version](https://poser.pugx.org/calotype/seo/version.png)](https://packagist.org/packages/calotype/seo) [![Total Downloads](https://poser.pugx.org/calotype/seo/d/total.png)](https://packagist.org/packages/calotype/seo) [![Build Status](https://travis-ci.org/Calotype/SEO.png)](https://travis-ci.org/Calotype/SEO)
+[![Latest Stable Version](https://poser.pugx.org/vinicius73/seo/version.png)](https://packagist.org/packages/vinicius73/seo) [![Total Downloads](https://poser.pugx.org/vinicius73/seo/d/total.png)](https://packagist.org/packages/vinicius73/seo)
 
-# Calotype / SEO
+# Vinicius73 / SEO
 
 > **Warning!** This package is still in an alpha/beta state.
 
@@ -15,6 +15,7 @@ SEO is a package that provides helpers for some common SEO techniques.
 - __Sitemap.xml__:
     - Generate a sitemap.xml and add your own entries.
     - Generate entries from one or more objects (lazy-loading is available).
+    - Cache friendly
 
 - __Robots.txt__:
     - Generate a robots.txt and add your own entries.
@@ -26,7 +27,7 @@ SEO is a package that provides helpers for some common SEO techniques.
 Require the package in your `composer.json`.
 
 ```
-"calotype/seo": "dev-master"
+"vinicius73/seo": "dev-master"
 ```
 
 Run composer install or update to download the package.
@@ -43,12 +44,12 @@ Just register the service provider and the facades in `app/config/app.php` and y
 
 ```php
 // Service provider
-'Calotype\SEO\Providers\SEOServiceProvider',
+'Vinicius73\SEO\Providers\SEOServiceProvider',
 
 // Facades (can customize if preferred)
-'SEO\Meta'    => 'Calotype\SEO\Facades\Meta',
-'SEO\Sitemap' => 'Calotype\SEO\Facades\Sitemap',
-'SEO\Robots'  => 'Calotype\SEO\Facades\Robots',
+'SEO\Meta'    => 'Vinicius73\SEO\Facades\Meta',
+'SEO\Sitemap' => 'Vinicius73\SEO\Facades\Sitemap',
+'SEO\Robots'  => 'Vinicius73\SEO\Facades\Robots',
 ```
 
 

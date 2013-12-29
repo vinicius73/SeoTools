@@ -1,6 +1,6 @@
-<?php namespace Calotype\SEO\Generators;
+<?php namespace Vinicius73\SEO\Generators;
 
-use Calotype\SEO\Contracts\OpenGraphAware;
+use Vinicius73\SEO\Contracts\OpenGraphAware;
 
 class OpenGraphGenerator
 {

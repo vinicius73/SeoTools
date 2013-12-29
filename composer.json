@@ -27,11 +27,11 @@
     },
 
     "suggest": {
-        "laravel/framework": "Calotype has built-in support for Laravel 4 using Service Providers and Facades."
+        "laravel/framework": "Vinicius73 has built-in support for Laravel 4 using Service Providers and Facades."
     },
 
     "autoload": {
-        "psr-0": { "Calotype\\SEO": "src/" }
+        "psr-0": { "Vinicius73\\SEO": "src/" }
     },
 
     "minimum-stability": "dev"

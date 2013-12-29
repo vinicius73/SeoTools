@@ -1,8 +1,8 @@
-<?php namespace Calotype\SEO\Generators;
+<?php namespace Vinicius73\SEO\Generators;
 
 use XMLWriter;
 use Traversable;
-use Calotype\SEO\Contracts\SitemapAware;
+use Vinicius73\SEO\Contracts\SitemapAware;
 
 class SitemapGenerator
 {
@@ -187,7 +187,7 @@ class SitemapGenerator
     protected function validateObject($element)
     {
         if (! $element instanceof SitemapAware) {
-            throw new \InvalidArgumentException("Element should implement Calotype\SEO\Contracts\SitemapAware");
+            throw new \InvalidArgumentException("Element should implement Vinicius73\SEO\Contracts\SitemapAware");
         }
     }
 
