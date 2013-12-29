@@ -11,6 +11,6 @@ return array(
     |
     */
 
-    'defaults' => 'Calotype\SEO\SitemapRun'
+    'classrun' => 'Calotype\SEO\SitemapRun'
 
 );

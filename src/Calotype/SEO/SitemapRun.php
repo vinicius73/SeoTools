@@ -8,7 +8,7 @@ class SitemapRun
 	 */
 	public $generator;
 
-	public function __controller($generator)
+	public function __construct($generator)
 	{
 		$this->generator = $generator;
 	}
