@@ -75,7 +75,7 @@ class SEOServiceProvider extends ServiceProvider
 
         // Register the meta tags generator
         $this->app->singleton('calotype.seo.generators.meta', function ($app) {
-            return new MetaGenerator($app['config']->get('seo::defaults'));
+            return new MetaGenerator($app['config']->get('seo::meta.defaults'));
         });
 
         // Register the robots.txt generator

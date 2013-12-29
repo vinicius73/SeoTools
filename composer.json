@@ -6,6 +6,10 @@
 
     "authors": [
         {
+            "name": "Vinicius Reis",
+            "email": "luiz.vinicius73@gmail.com"
+        },
+        {
             "name": "Bryan te Beek",
             "email": "bryantebeek@gmail.com"
         }
@@ -18,8 +22,8 @@
     "require-dev": {
         "mockery/mockery": "0.7.2",
         "phpunit/phpunit": "3.7.*",
-        "illuminate/http": "4.0.*",
-        "illuminate/support": "4.0.*"
+        "illuminate/http": "~4",
+        "illuminate/support": "~4"
     },
 
     "suggest": {
