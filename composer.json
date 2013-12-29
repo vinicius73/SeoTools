@@ -1,5 +1,5 @@
 {
-    "name": "vinicius73/seo",
+    "name": "vinicius73/SeoTools",
     "description": "A package containing SEO helpers.",
     "keywords": ["sitemap", "robots", "meta", "seo", "opengraph", "laravel"],
     "license": "MIT",
@@ -8,10 +8,6 @@
         {
             "name": "Vinicius Reis",
             "email": "luiz.vinicius73@gmail.com"
-        },
-        {
-            "name": "Bryan te Beek",
-            "email": "bryantebeek@gmail.com"
         }
     ],
 
@@ -34,5 +30,5 @@
         "psr-0": { "Vinicius73\\SEO": "src/" }
     },
 
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
