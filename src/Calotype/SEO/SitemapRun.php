@@ -1,5 +1,6 @@
 <?php namespace Calotype\SEO;
 
+
 class SitemapRun
 {
 
@@ -33,6 +34,15 @@ class SitemapRun
 				'last_modified'    => '2013-12-28',
 				'change_frequency' => 'weekly',
 				'priority'         => '0.95'
+			)
+		);
+
+		$this->generator->addRaw(
+			array(
+				'location'         => 'example.com/test/2',
+				'last_modified'    => '2013-12-25',
+				'change_frequency' => 'weekly',
+				'priority'         => '0.99'
 			)
 		);
 	}

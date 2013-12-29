@@ -4,17 +4,21 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
-    | Default configurations
+    | Default class runner
     |--------------------------------------------------------------------------
     |
-    | The default configurations to be used by the meta generator.
+    | Class that will be performed in the sitemap class
     |
     */
 
-    'defaults' => array(
-        'title' => false,
-        'description' => false,
-        'separator' => ' | '
-    ),
+    'classrun'  => 'Calotype\SEO\SitemapRun',
+    /**
+     * enable the sitemap cache
+     */
+    'cache'     => false,
+    /**
+     * Cache time in minutes
+     */
+    'cachetime' => 60
 
 );
