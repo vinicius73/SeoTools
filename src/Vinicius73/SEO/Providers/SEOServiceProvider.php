@@ -24,7 +24,7 @@ class SEOServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['config']->package('Vinicius73/seotools', __DIR__ . '/../../../config');
+        $this->app['config']->package('vinicius73/seotools', __DIR__ . '/../../../config');
 
         $this->registerBindings();
     }
