@@ -21,9 +21,16 @@ class MetaGenerator
 	/**
 	 * The meta keywords.
 	 *
-	 * @var string
+	 * @var array
 	 */
 	protected $keywords;
+
+	/**
+	 * extra metatags
+	 *
+	 * @var array
+	 */
+	protected $metatags = array();
 
 	/**
 	 * The default configurations.
@@ -59,6 +66,7 @@ class MetaGenerator
 		$title       = $this->getTitle();
 		$description = $this->getDescription();
 		$keywords    = $this->getKeywords();
+		$metatags    = $this->metatags;
 
 		$html[] = "<title>$title</title>";
 		$html[] = "<meta name='description' itemprop='description' content='$description' />";
@@ -66,6 +74,10 @@ class MetaGenerator
 		if (!empty($keywords)) {
 			$html[] = "<meta name='keywords' content='{$keywords}' />";
 		}
+
+		foreach ($metatags as $key => $value):
+			$html[] = "<meta name='{$key}' content='{$value}' />";
+		endforeach;
 
 		return implode(PHP_EOL, $html);
 	}
@@ -155,6 +167,21 @@ class MetaGenerator
 		endif;
 
 		$this->keywords[] = $keyword;
+	}
+
+	/**
+	 * @param string|array $meta
+	 * @param null $value
+	 */
+	public function addMeta($meta, $value = null)
+	{
+		if (is_array($meta)):
+			foreach ($meta as $key => $value):
+				$this->metatags[$key] = $value;
+			endforeach;
+		else:
+			$this->metatags[$meta] = $value;
+		endif;
 	}
 
 	/**
