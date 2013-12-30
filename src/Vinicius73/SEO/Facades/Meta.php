@@ -9,5 +9,5 @@ class Meta extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'Vinicius73.seo.generators.meta'; }
+    protected static function getFacadeAccessor() { return 'vinicius73.seotools.generators.meta'; }
 }

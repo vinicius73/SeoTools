@@ -9,5 +9,5 @@ class OpenGraph extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'Vinicius73.seo.generators.opengraph'; }
+    protected static function getFacadeAccessor() { return 'vinicius73.seotools.generators.opengraph'; }
 }

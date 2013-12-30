@@ -9,5 +9,5 @@ class Sitemap extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'Vinicius73.seo.generators.sitemap'; }
+    protected static function getFacadeAccessor() { return 'vinicius73.seotools.generators.sitemap'; }
 }

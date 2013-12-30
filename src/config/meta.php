@@ -2,23 +2,19 @@
 
 return array(
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default class runner
-    |--------------------------------------------------------------------------
-    |
-    | Class that will be performed in the sitemap class
-    |
-    */
+	/*
+	|--------------------------------------------------------------------------
+	| Default configurations
+	|--------------------------------------------------------------------------
+	|
+	| The default configurations to be used by the meta generator.
+	|
+	*/
 
-    'classrun'  => 'Vinicius73\SEO\SitemapRun',
-    /**
-     * enable the sitemap cache
-     */
-    'cache'     => false,
-    /**
-     * Cache time in minutes
-     */
-    'cachetime' => 60
+	'defaults' => array(
+		'title'       => false,
+		'description' => false,
+		'separator'   => ' | '
+	),
 
 );

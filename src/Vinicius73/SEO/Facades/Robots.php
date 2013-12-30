@@ -9,5 +9,5 @@ class Robots extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'Vinicius73.seo.generators.robots'; }
+    protected static function getFacadeAccessor() { return 'vinicius73.seotools.generators.robots'; }
 }

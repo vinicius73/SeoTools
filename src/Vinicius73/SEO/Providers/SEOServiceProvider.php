@@ -24,7 +24,7 @@ class SEOServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['config']->package('Vinicius73/seo', __DIR__ . '/../../../config');
+        $this->app['config']->package('Vinicius73/seotools', __DIR__ . '/../../../config');
 
         $this->registerBindings();
     }
@@ -39,27 +39,27 @@ class SEOServiceProvider extends ServiceProvider
         $app = $this->app;
 
         // Create the default robots.txt content
-        $this->app['Vinicius73.seo.generators.robots']->addUserAgent('*');
-        $this->app['Vinicius73.seo.generators.robots']->addDisallow('');
-        $this->app['Vinicius73.seo.generators.robots']->addSpacer();
-        $this->app['Vinicius73.seo.generators.robots']->addSitemap($this->app['request']->root() . '/sitemap.xml');
+        $this->app['vinicius73.seotools.generators.robots']->addUserAgent('*');
+        $this->app['vinicius73.seotools.generators.robots']->addDisallow('');
+        $this->app['vinicius73.seotools.generators.robots']->addSpacer();
+        $this->app['vinicius73.seotools.generators.robots']->addSitemap($this->app['request']->root() . '/sitemap.xml');
 
         // Generate sitemap.xml route
         $this->app['router']->get(
             'sitemap.xml',
             function () use ($app) {
-                if ($app['config']->get('seo::sitemap.cache')):
+                if ($app['config']->get('seotools::sitemap.cache')):
                     $sitemap = $app['cache']->remember(
-                        'seo::sitemap.xml',
-                        $app['config']->get('seo::sitemap.cachetime'),
+                        'seotools::sitemap.xml',
+                        $app['config']->get('seotools::sitemap.cachetime'),
                         function () use ($app) {
-                            $app['Vinicius73.seo.generators.sitemap.run']->run();
-                            return $app['Vinicius73.seo.generators.sitemap']->generate();
+                            $app['vinicius73.seotools.generators.sitemap.run']->run();
+                            return $app['vinicius73.seotools.generators.sitemap']->generate();
                         }
                     );
                 else:
-                    $app['Vinicius73.seo.generators.sitemap.run']->run();
-                    $sitemap = $app['Vinicius73.seo.generators.sitemap']->generate();
+                    $app['vinicius73.seotools.generators.sitemap.run']->run();
+                    $sitemap = $app['vinicius73.seotools.generators.sitemap']->generate();
                 endif;
 
                 $response = new Response($sitemap, 200);
@@ -73,7 +73,7 @@ class SEOServiceProvider extends ServiceProvider
         $this->app['router']->get(
             'robots.txt',
             function () use ($app) {
-                $response = new Response($app['Vinicius73.seo.generators.robots']->generate(), 200);
+                $response = new Response($app['vinicius73.seotools.generators.robots']->generate(), 200);
                 $response->header('Content-Type', 'text/plain');
 
                 return $response;
@@ -90,7 +90,7 @@ class SEOServiceProvider extends ServiceProvider
     {
         // Register the sitemap.xml generator
         $this->app->singleton(
-            'Vinicius73.seo.generators.sitemap',
+            'vinicius73.seotools.generators.sitemap',
             function ($app) {
                 return new SitemapGenerator();
             }
@@ -98,24 +98,24 @@ class SEOServiceProvider extends ServiceProvider
 
         // Register the sitemap configuration
         $this->app->singleton(
-            'Vinicius73.seo.generators.sitemap.run',
+            'vinicius73.seotools.generators.sitemap.run',
             function ($app) {
-                $class = $app['config']->get('seo::sitemap.classrun');
-                return new $class($app['Vinicius73.seo.generators.sitemap']);
+                $class = $app['config']->get('seotools::sitemap.classrun');
+                return new $class($app['vinicius73.seotools.generators.sitemap']);
             }
         );
 
         // Register the meta tags generator
         $this->app->singleton(
-            'Vinicius73.seo.generators.meta',
+            'vinicius73.seotools.generators.meta',
             function ($app) {
-                return new MetaGenerator($app['config']->get('seo::meta.defaults'));
+                return new MetaGenerator($app['config']->get('seotools::meta.defaults'));
             }
         );
 
         // Register the robots.txt generator
         $this->app->singleton(
-            'Vinicius73.seo.generators.robots',
+            'vinicius73.seotools.generators.robots',
             function ($app) {
                 return new RobotsGenerator();
             }
@@ -123,7 +123,7 @@ class SEOServiceProvider extends ServiceProvider
 
         // Register the open graph properties generator
         $this->app->singleton(
-            'Vinicius73.seo.generators.opengraph',
+            'vinicius73.seotools.generators.opengraph',
             function ($app) {
                 return new OpenGraphGenerator();
             }
@@ -138,9 +138,9 @@ class SEOServiceProvider extends ServiceProvider
     public function provides()
     {
         return array(
-            'Vinicius73.seo.generators.meta',
-            'Vinicius73.seo.generators.sitemap',
-            'Vinicius73.seo.generators.robots',
+            'vinicius73.seotools.generators.meta',
+            'vinicius73.seotools.generators.sitemap',
+            'vinicius73.seotools.generators.robots',
         );
     }
 
