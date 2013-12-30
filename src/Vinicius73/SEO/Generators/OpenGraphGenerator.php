@@ -32,10 +32,7 @@ class OpenGraphGenerator
 	 */
 	protected $required = array(
 		'title',
-		'type',
-		'image',
-		'url',
-		'site_name'
+		'url'
 	);
 
 	/**
@@ -47,15 +44,27 @@ class OpenGraphGenerator
 	{
 		$html = array();
 
-		foreach ($this->properties as $property => $value) {
-			$html[] = strtr(
-				static::OPENGRAPH_TAG,
-				array(
-					'[property]' => static::OPENGRAPH_PREFIX . $property,
-					'[value]'    => $value
-				)
-			);
-		}
+		foreach ($this->properties as $property => $value):
+			if (is_array($value)):
+				foreach ($value as $_value) {
+					$html[] = strtr(
+						static::OPENGRAPH_TAG,
+						array(
+							'[property]' => static::OPENGRAPH_PREFIX . $property,
+							'[value]'    => $_value
+						)
+					);
+				}
+			else:
+				$html[] = strtr(
+					static::OPENGRAPH_TAG,
+					array(
+						'[property]' => static::OPENGRAPH_PREFIX . $property,
+						'[value]'    => $value
+					)
+				);
+			endif;
+		endforeach;
 
 		return implode(PHP_EOL, $html);
 	}

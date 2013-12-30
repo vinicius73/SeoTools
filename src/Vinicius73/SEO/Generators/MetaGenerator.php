@@ -12,6 +12,13 @@ class MetaGenerator
 	protected $title;
 
 	/**
+	 * The meta title session.
+	 *
+	 * @var string
+	 */
+	protected $title_session;
+
+	/**
 	 * The meta description.
 	 *
 	 * @var string
@@ -113,6 +120,8 @@ class MetaGenerator
 	{
 		$title = strip_tags($title);
 
+		$this->title_session = $title;
+
 		$this->title = $title . $this->getDefault('separator') . $this->getDefault('title');
 	}
 
@@ -192,6 +201,14 @@ class MetaGenerator
 	public function getTitle()
 	{
 		return $this->title ? : $this->getDefault('title');
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTitleSession()
+	{
+		return $this->title_session ? : $this->getTitle();
 	}
 
 	/**
