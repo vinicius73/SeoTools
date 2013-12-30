@@ -14,7 +14,8 @@ return array(
 	'defaults' => array(
 		'title'       => false,
 		'description' => false,
-		'separator'   => ' | '
+		'separator'   => ' | ',
+		'keywords'    => array(),
 	),
 
 );

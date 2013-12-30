@@ -34,7 +34,7 @@ class MetaGenerator
 		'title'       => false,
 		'description' => false,
 		'separator'   => ' | ',
-		'keywords'    => false
+		'keywords'    => array()
 	);
 
 	/**
@@ -123,11 +123,38 @@ class MetaGenerator
 	/**
 	 * Set the Meta keywords.
 	 *
-	 * @param string $keywords
+	 * @param string|array $keywords
 	 */
 	public function setKeywords($keywords)
 	{
 		$this->keywords = $keywords;
+	}
+
+	/**
+	 * @param string|array $defaultkey
+	 * @param string $value
+	 */
+	public function setDefaults($defaultkey, $value = null)
+	{
+		if (is_array($defaultkey)):
+			foreach ($defaultkey as $key => $value):
+				$this->defaults[$key] = $value;
+			endforeach;
+		else:
+			$this->defaults[$defaultkey] = $value;
+		endif;
+	}
+
+	/**
+	 * @param string $keyword
+	 */
+	public function addKeyword($keyword)
+	{
+		if (!is_array($this->keywords)):
+			$this->keywords = explode(', ', $this->keywords);
+		endif;
+
+		$this->keywords[] = $keyword;
 	}
 
 	/**
@@ -147,7 +174,8 @@ class MetaGenerator
 	 */
 	public function getKeywords()
 	{
-		return $this->keywords ? : $this->getDefault('keywords');
+		$keywords = $this->keywords ? : $this->getDefault('keywords');
+		return (is_array($keywords)) ? implode(', ', $keywords) : $keywords;
 	}
 
 	/**
@@ -169,7 +197,7 @@ class MetaGenerator
 	{
 		$this->title       = null;
 		$this->description = null;
-		$this->keywords    = null;
+		$this->keywords    = array();
 	}
 
 	/**
