@@ -13,6 +13,11 @@ class OpenGraph implements OpenGraphAware
 	protected $data = array();
 
 	/**
+	 * @var bool
+	 */
+	protected $defaultImageChanged = false;
+
+	/**
 	 * @var array
 	 */
 	protected static $defaults = array(
@@ -104,17 +109,66 @@ class OpenGraph implements OpenGraphAware
 	public function __call($key, $value)
 	{
 		if ($key == 'image'):
-			$this->addImage($value);
-		elseif (in_array($key, self::$defaults)):
-			$this->data[$key] = $value;
+			return $this->addImage($value);
 		endif;
 
-		return $this;
+		return $this->data[$key] = $value;
 	}
 
 	public function addImage($image)
 	{
+		if (!$this->defaultImageChanged):
+			$this->defaultImageChanged = true;
+			$this->data['image']     = array();
+		endif;
 		$this->data['image'][] = $image;
+		return $this;
+	}
+
+	/**
+	 * @param string $value
+	 * @return $this
+	 */
+	public function setUrl($value)
+	{
+		return $this->setProperty('url', $value);
+	}
+
+	/**
+	 * @param string $value
+	 * @return $this
+	 */
+	public function setType($value)
+	{
+		return $this->setProperty('type', $value);
+	}
+
+	/**
+	 * @param string $value
+	 * @return $this
+	 */
+	public function setSiteName($value)
+	{
+		return $this->setProperty('site_name', $value);
+	}
+
+	/**
+	 * @param string $value
+	 * @return $this
+	 */
+	public function setDescription($value)
+	{
+		return $this->setProperty('description', $value);
+	}
+
+	/**
+	 * @param $key
+	 * @param $value
+	 * @return $this
+	 */
+	public function setProperty($key, $value)
+	{
+		$this->data[$key] = $value;
 		return $this;
 	}
 
