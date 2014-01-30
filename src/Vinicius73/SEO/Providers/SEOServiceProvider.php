@@ -60,8 +60,7 @@ class SEOServiceProvider extends ServiceProvider
 							}
 						);
 					else:
-						$app['vinicius73.seotools.generators.sitemap.run']->run();
-						$sitemap = $app['vinicius73.seotools.generators.sitemap']->generate();
+						$sitemap = $app['vinicius73.seotools.generators.sitemap.run']->run();
 					endif;
 
 					$response = new Response($sitemap, 200);

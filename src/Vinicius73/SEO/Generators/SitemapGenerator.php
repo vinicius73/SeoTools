@@ -147,6 +147,36 @@ class SitemapGenerator
         return $xml->outputMemory();
     }
 
+	/**
+	 * Generate the xml for the sitemap.
+	 *
+	 * @return string
+	 */
+	public function generateIndex()
+	{
+		$this->loadClosures();
+
+		$xml = new XMLWriter();
+		$xml->openMemory();
+
+		$xml->writeRaw('<?xml version="1.0" encoding="UTF-8"?>');
+		$xml->writeRaw('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+
+		foreach ($this->entries as $data) {
+			$xml->startElement('sitemap');
+
+			foreach ($data as $attribute => $value) {
+				$xml->writeElement($attribute, $value);
+			}
+
+			$xml->endElement();
+		}
+
+		$xml->writeRaw('</urlset>');
+
+		return $xml->outputMemory();
+	}
+
     /**
      * Clean all entries from the sitemap.
      *
