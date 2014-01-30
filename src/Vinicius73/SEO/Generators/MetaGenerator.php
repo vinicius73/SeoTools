@@ -83,7 +83,9 @@ class MetaGenerator
 		}
 
 		foreach ($metatags as $key => $value):
-			$html[] = "<meta name='{$key}' content='{$value}' />";
+			$name    = $value[0];
+			$content = $value[1];
+			$html[]  = "<meta {$name}='{$key}' content='{$content}' />";
 		endforeach;
 
 		return implode(PHP_EOL, $html);
@@ -179,17 +181,18 @@ class MetaGenerator
 	}
 
 	/**
-	 * @param string|array $meta
-	 * @param null $value
+	 * @param        $meta
+	 * @param null   $value
+	 * @param string $name
 	 */
-	public function addMeta($meta, $value = null)
+	public function addMeta($meta, $value = NULL, $name = 'name')
 	{
 		if (is_array($meta)):
 			foreach ($meta as $key => $value):
-				$this->metatags[$key] = $value;
+				$this->metatags[$key] = [$name, $value];
 			endforeach;
 		else:
-			$this->metatags[$meta] = $value;
+			$this->metatags[$meta] = [$name, $value];
 		endif;
 	}
 
