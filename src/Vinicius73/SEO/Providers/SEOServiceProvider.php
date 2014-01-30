@@ -15,7 +15,7 @@ class SEOServiceProvider extends ServiceProvider
 	 *
 	 * @var bool
 	 */
-	protected $defer = false;
+	protected $defer = FALSE;
 
 	/**
 	 * Register the service provider.
@@ -45,30 +45,32 @@ class SEOServiceProvider extends ServiceProvider
 		$this->app['vinicius73.seotools.generators.robots']->addSitemap($this->app['request']->root() . '/sitemap.xml');
 
 		// Generate sitemap.xml route
-		$this->app['router']->get(
-			'sitemap.xml',
-			function () use ($app) {
-				if ($app['config']->get('seotools::sitemap.cache')):
-					$sitemap = $app['cache']->remember(
-						'seotools::sitemap.xml',
-						$app['config']->get('seotools::sitemap.cachetime'),
-						function () use ($app) {
-							$app['vinicius73.seotools.generators.sitemap.run']->run();
-							return $app['vinicius73.seotools.generators.sitemap']->generate();
-						}
-					);
-				else:
-					$app['vinicius73.seotools.generators.sitemap.run']->run();
-					$sitemap = $app['vinicius73.seotools.generators.sitemap']->generate();
-				endif;
+		if ($app['config']->get('seotools::sitemap.enabled')):
+			$this->app['router']->get(
+				'sitemap.xml',
+				function () use ($app) {
+					if ($app['config']->get('seotools::sitemap.cache')):
+						$sitemap = $app['cache']->remember(
+							'seotools::sitemap.xml',
+							$app['config']->get('seotools::sitemap.cachetime'),
+							function () use ($app) {
+								$app['vinicius73.seotools.generators.sitemap.run']->run();
 
-				$response = new Response($sitemap, 200);
-				$response->header('Content-Type', 'text/xml');
+								return $app['vinicius73.seotools.generators.sitemap']->generate();
+							}
+						);
+					else:
+						$app['vinicius73.seotools.generators.sitemap.run']->run();
+						$sitemap = $app['vinicius73.seotools.generators.sitemap']->generate();
+					endif;
 
-				return $response;
-			}
-		);
+					$response = new Response($sitemap, 200);
+					$response->header('Content-Type', 'text/xml');
 
+					return $response;
+				}
+			);
+		endif;
 		// Generate robots.txt route
 		$this->app['router']->get(
 			'robots.txt',
@@ -101,6 +103,7 @@ class SEOServiceProvider extends ServiceProvider
 			'vinicius73.seotools.generators.sitemap.run',
 			function ($app) {
 				$class = $app['config']->get('seotools::sitemap.classrun');
+
 				return new $class($app['vinicius73.seotools.generators.sitemap']);
 			}
 		);
@@ -134,6 +137,7 @@ class SEOServiceProvider extends ServiceProvider
 			'vinicius73.seotools.generators.opengraph.helper',
 			function ($app) {
 				$defaults = $app['config']->get('seotools::opengraph.defaults');
+
 				return new OpenGraphHelper(array(), $defaults);
 			}
 		);

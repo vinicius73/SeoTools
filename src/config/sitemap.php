@@ -19,6 +19,10 @@ return array(
 	/**
 	 * Cache time in minutes
 	 */
-	'cachetime' => 60
+	'cachetime' => 60,
+	/**
+	 * enable the sitemap
+	 */
+	'enabled' => false,
 
 );
