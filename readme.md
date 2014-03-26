@@ -181,3 +181,37 @@ class SitemapRun
 	}
 }
 ```
+
+### In Your View
+
+```html
+<html>
+<head>
+	{{SEOMeta::generate()}}
+	{{OpenGraph::generate()}}
+</head>
+<body>
+
+</body>
+</html>
+```
+
+```html
+<html>
+<head>
+	<title>Title | SubTitle</title>
+	<meta name='description' itemprop='description' content='description...' />
+	<meta name='keywords' content='key1, key2, key3' />
+	<meta property='article:published_time' content='2014-01-31T20:30:11-02:00' />
+	<meta property='article:section' content='news' />
+	<meta property="og:title" content="title" />
+	<meta property="og:description" content="description..." />
+	<meta property="og:url" content="curent_or_custom_url" />
+	<meta property="og:image" content="full_url_to_image.jpg" />
+	<meta property="og:site_name" content="Site name from config" />
+</head>
+<body>
+
+</body>
+</html>
+```
