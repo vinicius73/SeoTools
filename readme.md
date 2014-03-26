@@ -45,11 +45,11 @@ Just register the service provider and the facades in `app/config/app.php` and y
 'OpenGraph'   => 'Vinicius73\SEO\Facades\OpenGraphHelper',
 ```
 
-## Configuração
+## Configuration
 Run your terminal: `php artisan config:publish "vinicius73/seotools"`  
 The configuration files are available from: `app/config/packages/vinicius73/seotools`
 
-## Uso
+## Using
 Using SEOTools is very easy and friendly.   
 Recommend using the `barryvdh / laravel-ide-helper` that make it much easier to develop if you use an IDE like NetBeans or PhpStorm
 
@@ -65,7 +65,7 @@ class CommomController extends BaseController
 	public function index()
 	{
 		SEOMeta::setTitle('Home');
-        SEOMeta::setDescription('Isto é a minha descrição de página'); // é altomáticamente limitada a 255 caracteres
+        SEOMeta::setDescription('Isto é a minha descrição de página'); // is automatically limited to 160 characters
         OpenGraph::addImage('full-url-to-image-1.png');
         OpenGraph::addImage('full-url-to-image-2.png');
         
