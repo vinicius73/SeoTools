@@ -1,39 +1,38 @@
 # Vinicius73 / SEOTools
 
-> **Warning!** This package still needs to have its optimized test. 
+> **Atenção!** Este pacote ainda precisa ter seu teste otimizada.
 ----
 > This package is a fork of https://github.com/Calotype/SEO
 
-SEOTools is a package for **Laravel 4** that provides helpers for some common SEO techniques.
+SEOTools é um pacote para **Laravel 4** que fornece helpers para algumas técnicas de SEO.
 
 ## Features
 
-- Ease of set titles and meta tags 
-- friendly interface 
-- Easy setup and custumização 
-- Support OpenGraph 
-- Support SiteMaps and SiteMaps Index
-- Support images in SiteMap
+- Facilidade de definir títulos e meta tags 
+- Interface amigável 
+- Fácil instalação e custumização 
+- Suporte a OpenGraph 
+- Suporte a SiteMaps e SiteMaps Index 
+- Suporte a Imagens em SiteMap
 
 ## Installation
 
 ### Composer / Packagist
 
-Require the package in your `composer.json`.
+Exigir que o pacote em seu `composer.json`.
 
 ```
 "vinicius73/seotools": "dev-master"
 ```
 
-Run composer install or update to download the package.
+Executar _composer install ou update_
 
 ```bash
 $ composer update
 ```
 
 ### Providers
-
-Just register the service provider and the facades in `app/config/app.php` and you are good to go.
+Basta registrar os providers e facades em `app/config/app.php`
 
 ```php
 // Service provider
@@ -46,12 +45,12 @@ Just register the service provider and the facades in `app/config/app.php` and y
 ```
 
 ## Configuração
-Run your terminal: `php artisan config:publish "vinicius73/seotools"`  
-The configuration files are available from: `app/config/packages/vinicius73/seotools`
+Execute no seu terminal : `php artisan config:publish "vinicius73/seotools"`  
+Os arquivos de configuração estarão disponíveis em: `app/config/packages/vinicius73/seotools`
 
 ## Uso
-Using SEOTools is very easy and friendly.   
-Recommend using the `barryvdh / laravel-ide-helper` that make it much easier to develop if you use an IDE like NetBeans or PhpStorm
+Usar o SEOTools é muito fácil e amigável.  
+Recomendo o uso do pacote `barryvdh/laravel-ide-helper` que fácilitara muito mais o desenvolvimento, se você usa um IDE como NetBeans ou PhpStorm
 
 ### MetaGenerator e OpenGraph  
 
@@ -97,14 +96,13 @@ class CommomController extends BaseController
 ```
 
 ### SiteMapGenerator
-By default SiteMapGenerator [controller uses a model](https://github.com/vinicius73/SeoTools/blob/master/src/Vinicius73/SEO/SitemapRun.php) that aims to facilitate the creation of sitemaps.   
-Its use is not mandatory and may be used freely quelquer route or controller, you can disable it in the configuration file. 
+Por padrão o SiteMapGenerator usa um [modelo de controller](https://github.com/vinicius73/SeoTools/blob/master/src/Vinicius73/SEO/SitemapRun.php) que visa facilitar a criação de sitemaps.  
+Seu uso não é obrigatório, podendo ser usado livremente em quelquer rota ou controller, você pode desabilita-lo pelo arquivo de configuração.  
 
 #### Criando controller para SiteMap
-Change  `classrun` in `app/config/packages/vinicius73/seotools` -> `'classrun'  => 'SitemapRun',`   
-You can map any class yours.
-
-> Remember to map the additional sitemaps you create by `routes.php`
+Mude a propriedade `classrun` em `app/config/packages/vinicius73/seotools` -> `'classrun'  => 'SitemapRun',`   
+Você pode mapear qualquer classe sua.  
+> Lembre-se de mapear os sitemaps adicionais que você criar, pelo `routes.php`
 
 ```php
 class SitemapRun
@@ -151,7 +149,7 @@ class SitemapRun
             $images = $post->images;
             
             $element = array(
-        			  'location'         => route('route.to.post.show', $post->id),
+        			  'location'         => route('route.to.post.show',$post->id),
     				  'last_modified'    => $post->published_date->toW3CString(),
     				  'change_frequency' => 'weekly',
     				  'priority'         => '0.90'
