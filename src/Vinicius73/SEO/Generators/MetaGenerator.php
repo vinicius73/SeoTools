@@ -189,10 +189,10 @@ class MetaGenerator
 	{
 		if (is_array($meta)):
 			foreach ($meta as $key => $value):
-				$this->metatags[$key] = [$name, $value];
+				$this->metatags[$key] = array($name, $value);
 			endforeach;
 		else:
-			$this->metatags[$meta] = [$name, $value];
+			$this->metatags[$meta] = array($name, $value);
 		endif;
 	}
 

@@ -175,7 +175,7 @@ class SitemapRun
 	 */
 	private function response($sitemap)
 	{
-		return Response::make($sitemap, 200, ['Content-Type' => 'text/xml']);
+		return Response::make($sitemap, 200, array('Content-Type' => 'text/xml'));
 	}
 }
 ```
