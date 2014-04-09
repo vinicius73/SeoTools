@@ -1,5 +1,7 @@
 # Vinicius73 / SEOTools
 
+[![Latest Stable Version](https://poser.pugx.org/vinicius73/seotools/v/stable.png)](https://packagist.org/packages/vinicius73/seotools) [![Total Downloads](https://poser.pugx.org/vinicius73/seotools/downloads.png)](https://packagist.org/packages/vinicius73/seotools) [![Latest Unstable Version](https://poser.pugx.org/vinicius73/seotools/v/unstable.png)](https://packagist.org/packages/vinicius73/seotools) [![License](https://poser.pugx.org/vinicius73/seotools/license.png)](https://packagist.org/packages/vinicius73/seotools)
+
 > **Warning!** This package still needs to have its optimized test. 
 ----
 > This package is a fork of https://github.com/Calotype/SEO
@@ -177,7 +179,7 @@ class SitemapRun
 	 */
 	private function response($sitemap)
 	{
-		return Response::make($sitemap, 200, ['Content-Type' => 'text/xml']);
+		return Response::make($sitemap, 200, array('Content-Type' => 'text/xml'));
 	}
 }
 ```

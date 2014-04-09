@@ -1,5 +1,7 @@
 # Vinicius73 / SEOTools
 
+[![Latest Stable Version](https://poser.pugx.org/vinicius73/seotools/v/stable.png)](https://packagist.org/packages/vinicius73/seotools) [![Total Downloads](https://poser.pugx.org/vinicius73/seotools/downloads.png)](https://packagist.org/packages/vinicius73/seotools) [![Latest Unstable Version](https://poser.pugx.org/vinicius73/seotools/v/unstable.png)](https://packagist.org/packages/vinicius73/seotools) [![License](https://poser.pugx.org/vinicius73/seotools/license.png)](https://packagist.org/packages/vinicius73/seotools)
+
 > **Atenção!** Este pacote ainda precisa ter seu teste otimizada.
 ----
 > This package is a fork of https://github.com/Calotype/SEO
