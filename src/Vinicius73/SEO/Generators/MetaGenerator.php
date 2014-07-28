@@ -136,8 +136,8 @@ class MetaGenerator
 	{
 		$description = strip_tags($description);
 
-		if (strlen($description) > 160) {
-			$description = substr($description, 0, 160);
+		if (mb_strlen($description) > 160) {
+			$description = mb_substr($description, 0, 160);
 		}
 
 		$this->description = $description;
