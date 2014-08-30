@@ -4,7 +4,6 @@ use Illuminate\Http\Response;
 use Illuminate\Support\ServiceProvider;
 use Vinicius73\SEO\Generators\MetaGenerator;
 use Vinicius73\SEO\Generators\OpenGraphGenerator;
-use Vinicius73\SEO\Generators\RobotsGenerator;
 use Vinicius73\SEO\Generators\SitemapGenerator;
 use Vinicius73\SEO\OpenGraph as OpenGraphHelper;
 
@@ -15,7 +14,7 @@ class SEOServiceProvider extends ServiceProvider
 	 *
 	 * @var bool
 	 */
-	protected $defer = FALSE;
+	protected $defer = false;
 
 	/**
 	 * Register the service provider.
@@ -37,12 +36,6 @@ class SEOServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$app = $this->app;
-
-		// Create the default robots.txt content
-		$this->app['vinicius73.seotools.generators.robots']->addUserAgent('*');
-		$this->app['vinicius73.seotools.generators.robots']->addDisallow('');
-		$this->app['vinicius73.seotools.generators.robots']->addSpacer();
-		$this->app['vinicius73.seotools.generators.robots']->addSitemap($this->app['request']->root() . '/sitemap.xml');
 
 		// Generate sitemap.xml route
 		if ($app['config']->get('seotools::sitemap.enabled')):
@@ -70,16 +63,6 @@ class SEOServiceProvider extends ServiceProvider
 				}
 			);
 		endif;
-		// Generate robots.txt route
-		$this->app['router']->get(
-			'robots.txt',
-			function () use ($app) {
-				$response = new Response($app['vinicius73.seotools.generators.robots']->generate(), 200);
-				$response->header('Content-Type', 'text/plain');
-
-				return $response;
-			}
-		);
 	}
 
 	/**
@@ -115,14 +98,6 @@ class SEOServiceProvider extends ServiceProvider
 			}
 		);
 
-		// Register the robots.txt generator
-		$this->app->singleton(
-			'vinicius73.seotools.generators.robots',
-			function ($app) {
-				return new RobotsGenerator();
-			}
-		);
-
 		// Register the open graph properties generator
 		$this->app->singleton(
 			'vinicius73.seotools.generators.opengraph',
@@ -152,7 +127,6 @@ class SEOServiceProvider extends ServiceProvider
 		return array(
 			'vinicius73.seotools.generators.meta',
 			'vinicius73.seotools.generators.sitemap',
-			'vinicius73.seotools.generators.robots',
 			'vinicius73.seotools.generators.opengraph',
 			'vinicius73.seotools.generators.opengraph.helper'
 		);

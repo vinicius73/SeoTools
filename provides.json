@@ -12,10 +12,6 @@
             "facade": "Vinicius73\SEO\Facades\Sitemap"
         },
         {
-            "alias": "SEO\Robots",
-            "facade": "Vinicius73\SEO\Facades\Robots"
-        },
-        {
             "alias": "SEO\OpenGraph",
             "facade": "Vinicius73\SEO\Facades\OpenGraph"
         }
