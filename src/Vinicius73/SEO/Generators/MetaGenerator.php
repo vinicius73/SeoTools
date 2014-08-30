@@ -51,16 +51,33 @@ class MetaGenerator
 		'keywords'    => array()
 	);
 
+	protected $webmaster = array(
+		'google'   => null,
+		'bing'     => null,
+		'alexa'    => null,
+		'pintrest' => null,
+		'yandex'   => null
+	);
+
+	public static $webmasterTags = array(
+		'google'   => "google-site-verification",
+		'bing'     => "msvalidate.01",
+		'alexa'    => "alexaVerifyID",
+		'pintrest' => "p:domain_verify",
+		'yandex'   => "yandex-verification"
+	);
+
 	/**
 	 * Create a new MetaGenerator instance.
 	 *
 	 * @param array $defaults
+	 * @param array $webmaster
 	 */
-	public function __construct(array $defaults = array())
+	public function __construct(array $defaults = array(), array $webmaster = array())
 	{
-		foreach ($defaults as $key => $value) {
-			$this->defaults[$key] = $value;
-		}
+		$this->defaults = array_merge($this->defaults, $defaults);
+
+		$this->webmaster = array_merge($this->webmaster, $webmaster);
 	}
 
 	/**
@@ -70,13 +87,17 @@ class MetaGenerator
 	 */
 	public function generate()
 	{
+		$this->loadWebmasterTags();
+
 		$title       = $this->getTitle();
 		$description = $this->getDescription();
 		$keywords    = $this->getKeywords();
 		$metatags    = $this->metatags;
 
+		$html = array();
+
 		$html[] = "<title>$title</title>";
-		$html[] = "<meta name='description' itemprop='description' content='$description' />";
+		$html[] = "<meta name='description' itemprop='description' content='{$description}' />";
 
 		if (!empty($keywords)) {
 			$html[] = "<meta name='keywords' content='{$keywords}' />";
@@ -182,10 +203,10 @@ class MetaGenerator
 
 	/**
 	 * @param        $meta
-	 * @param null   $value
+	 * @param null $value
 	 * @param string $name
 	 */
-	public function addMeta($meta, $value = NULL, $name = 'name')
+	public function addMeta($meta, $value = null, $name = 'name')
 	{
 		if (is_array($meta)):
 			foreach ($meta as $key => $value):
@@ -253,6 +274,8 @@ class MetaGenerator
 	 * @param string $default
 	 *
 	 * @return mixed
+	 *
+	 * @throws \InvalidArgumentException
 	 */
 	public function getDefault($default)
 	{
@@ -262,5 +285,18 @@ class MetaGenerator
 
 		$class = get_class($this);
 		throw new \InvalidArgumentException("{$class}: default configuration $default does not exist.");
+	}
+
+	/**
+	 * Load Webmaster tags
+	 */
+	public function loadWebmasterTags()
+	{
+		foreach ($this->webmaster as $name => $value):
+			if (!empty($value)):
+				$meta = array_get(self::$webmasterTags, $name, $name);
+				$this->addMeta($meta, $value);
+			endif;
+		endforeach;
 	}
 }

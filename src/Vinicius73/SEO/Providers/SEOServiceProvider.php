@@ -94,7 +94,10 @@ class SEOServiceProvider extends ServiceProvider
 		$this->app->singleton(
 			'vinicius73.seotools.generators.meta',
 			function ($app) {
-				return new MetaGenerator($app['config']->get('seotools::meta.defaults'));
+				$defaults = $app['config']->get('seotools::meta.defaults');
+				$webmaster = $app['config']->get('seotools::webmaster');
+
+				return new MetaGenerator($defaults, $webmaster);
 			}
 		);
 
