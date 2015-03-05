@@ -8,6 +8,8 @@
 
 SEOTools is a package for **Laravel 4** that provides helpers for some common SEO techniques.
 
+> ##For **Laravel 5** use [artesaos/seotools](https://github.com/artesaos/seotools)
+
 ## Features
 
 - Ease of set titles and meta tags 
