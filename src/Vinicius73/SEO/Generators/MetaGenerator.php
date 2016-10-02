@@ -97,16 +97,16 @@ class MetaGenerator
 		$html = array();
 
 		$html[] = "<title>$title</title>";
-		$html[] = "<meta name='description' itemprop='description' content='{$description}' />";
+		$html[] = sprintf('<meta name="description" itemprop="description" content="%s" />%s', $description, PHP_EOL);
 
 		if (!empty($keywords)) {
-			$html[] = "<meta name='keywords' content='{$keywords}' />";
+			$html[] = sprintf('<meta name="keywords" content="%s" />%s', $keywords, PHP_EOL);
 		}
 
 		foreach ($metatags as $key => $value):
 			$name    = $value[0];
 			$content = $value[1];
-			$html[]  = "<meta {$name}='{$key}' content='{$content}' />";
+			$html[] = sprintf('<meta %s="%s" content="%s" />%s', $name, $key, $content, PHP_EOL);
 		endforeach;
 
 		return implode(PHP_EOL, $html);
